@@ -1,9 +1,36 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    loadComponent: () =>
+      import('./features/dashboard-page/dashboard-page.component').then(
+        (m) => m.DashboardPageComponent,
+      ),
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./features/dashboard-page/dashboard-page.component').then(
+        (m) => m.DashboardPageComponent,
+      ),
+  },
+  {
+    path: 'branches',
+    loadComponent: () =>
+      import(
+        './features/branches/list-branches-page/list-branches-page.component'
+      ).then((m) => m.ListBranchesPageComponent),
+  },
+  {
+    path: 'employees',
+    loadComponent: () =>
+      import(
+        './features/employees/list-employees-page/list-employees-page.component'
+      ).then((m) => m.ListEmployeesPageComponent),
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
