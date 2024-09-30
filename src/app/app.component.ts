@@ -21,7 +21,7 @@ import { LeftMenuItem } from './models/left-menu-itens.model';
     MatListModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   mobileQuery: MediaQueryList;
