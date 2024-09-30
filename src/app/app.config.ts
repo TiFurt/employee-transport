@@ -19,13 +19,13 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideFirebaseApp(() =>
       initializeApp({
-        projectId: 'employee-transport-2bd6a',
-        appId: '1:902685995403:web:c4919dd6985672836b3f8e',
-        storageBucket: 'employee-transport-2bd6a.appspot.com',
         apiKey: 'AIzaSyBVNXVyA6wlrrBep0GyDzOAJXbH7SlQjAY',
         authDomain: 'employee-transport-2bd6a.firebaseapp.com',
+        projectId: 'employee-transport-2bd6a',
+        storageBucket: 'employee-transport-2bd6a.appspot.com',
         messagingSenderId: '902685995403',
-        measurementId: 'G-B1QL2GF9C7',
+        appId: '1:902685995403:web:192c37fa77f22c156b3f8e',
+        measurementId: 'G-2DM794RMCE',
       }),
     ),
     provideAnalytics(() => getAnalytics()),
