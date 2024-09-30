@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-list-employees',
+  selector: 'app-list-branches',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
-  template: `<p>list-employees works!</p>`,
-  styleUrl: './list-employees.component.css',
+  imports: [CommonModule],
+  template: `<p>list-branches works!</p>`,
+  styleUrl: './list-branches-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListEmployeesComponent { }
+export class ListBranchesPageComponent {}
