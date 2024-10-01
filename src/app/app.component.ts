@@ -28,8 +28,8 @@ export class AppComponent {
 
   routes: LeftMenuItem[] = [
     { name: 'Dashboard', route: '/dashboard' },
-    { name: 'Branches', route: '/branches' },
-    { name: 'Employees', route: '/employees' },
+    { name: 'Filiais', route: '/branches' },
+    { name: 'Funcionários', route: '/employees' },
   ];
 
   private _mobileQueryListener: () => void;
