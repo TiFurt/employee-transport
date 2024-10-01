@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @for $i from 0 through 100 {
-  $size: percentage($i/100);
+  $size: percentage(calc($i / 100));
 
   .w-#{$i} {
     width: $size;

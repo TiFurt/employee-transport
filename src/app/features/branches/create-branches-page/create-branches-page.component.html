@@ -1,11 +1,19 @@
 <mat-form-field class="w-100">
   <mat-label>Nome</mat-label>
-  <input matInput placeholder="Digite o nome da filial" />
+  <input
+    matInput
+    placeholder="Digite o nome da filial"
+    [formControl]="formGroup.controls.name"
+  />
 </mat-form-field>
 
 <mat-form-field class="w-100">
   <mat-label>Descrição</mat-label>
-  <textarea matInput placeholder="Descreva a filia"></textarea>
+  <textarea
+    matInput
+    placeholder="Descreva a filial"
+    [formControl]="formGroup.controls.description"
+  ></textarea>
 </mat-form-field>
 
 <div class="actions text-center">
