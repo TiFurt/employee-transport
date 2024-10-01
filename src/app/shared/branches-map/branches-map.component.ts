@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
   output,
+  signal,
 } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -25,8 +27,14 @@ export class BranchesMapComponent {
     maxZoom: 15,
     minZoom: 8,
   };
+  markerOptions = computed<google.maps.MarkerOptions>(() => {
+    return { draggable: !this.selectMultiplePositions() || this.draggable() };
+  });
+  markerPositions = signal<google.maps.LatLngLiteral[]>([]);
 
   enableClick = input<boolean>(false);
+  selectMultiplePositions = input<boolean>(false);
+  draggable = input<boolean>(false);
   onClick = output<google.maps.MapMouseEvent | google.maps.IconMouseEvent>();
 
   onMapClick(
@@ -36,6 +44,22 @@ export class BranchesMapComponent {
       return;
     }
 
+    this.addMarker(event);
     this.onClick.emit(event);
+  }
+
+  addMarker(event: google.maps.MapMouseEvent) {
+    if (!event.latLng) {
+      return;
+    }
+
+    let markerPositions = this.markerPositions();
+
+    if (!this.selectMultiplePositions()) {
+      markerPositions = [];
+    }
+
+    markerPositions.push(event.latLng.toJSON());
+    this.markerPositions.set(markerPositions);
   }
 }
