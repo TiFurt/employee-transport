@@ -5,7 +5,7 @@
   },
   "hosting": {
     "site": "ai-employee-transport",
-    "public": "public",
+    "public": "dist/employee-transport/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "frameworksBackend": {
       "region": "us-east1"
