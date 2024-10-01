@@ -8,3 +8,11 @@
     <span>Criar Colaborador</span>
   </button>
 </div>
+
+<div class="employee-list">
+  @for (employee of employees; track employee) {
+    <app-employee-card
+    [employee]="employee">
+    </app-employee-card>
+  }
+</div>

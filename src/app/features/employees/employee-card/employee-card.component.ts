@@ -2,7 +2,7 @@ import {
   CurrencyPipe,
   DatePipe
 } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 import {
   MatButton,
   MatIconButton
@@ -15,6 +15,7 @@ import {
   MatCardTitle
 } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 import { Employee } from '@features/employees/employee.model';
 
 @Component({
@@ -28,10 +29,10 @@ import { Employee } from '@features/employees/employee.model';
     MatCardTitle,
     MatCardHeader,
     MatCard,
-    ButtonComponent,
     MatIcon,
     MatIconButton,
     MatButton,
+    RouterLink,
   ],
   templateUrl: './employee-card.component.html',
   styleUrl: './employee-card.component.scss',
