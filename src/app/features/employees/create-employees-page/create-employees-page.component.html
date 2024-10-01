@@ -1,11 +1,24 @@
-<mat-form-field class="w-100">
-  <mat-label>Nome</mat-label>
-  <input
-    matInput
-    placeholder="Digite o nome da filial"
-    [formControl]="formGroup.controls.name"
-  />
-</mat-form-field>
+<div class="d-grid tc-350 grid-gap">
+  <mat-form-field class="w-100">
+    <mat-label>Nome</mat-label>
+    <input
+      matInput
+      placeholder="Digite o nome da filial"
+      [formControl]="formGroup.controls.name"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Filial</mat-label>
+    <mat-select [formControl]="formGroup.controls.branchId">
+      @for (item of branches$ | async; track item) {
+        <mat-option [value]="item.id">{{ item.name }}</mat-option>
+      } @empty {
+        <mat-option disabled selected>Nenhuma filial encontrada</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <app-branches-map
   [enableClick]="true"

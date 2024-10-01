@@ -20,3 +20,21 @@ $text-alignments: (left, center, right, justify);
     text-align: $alignment;
   }
 }
+
+$display-values: (block, inline, inline-block, flex, grid);
+@each $display in $display-values {
+  .d-#{$display} {
+    display: $display;
+  }
+}
+
+$template-columns: (100, 150, 200, 250, 300, 350, 400, 450, 500);
+@each $column in $template-columns {
+  .tc-#{$column} {
+    grid-template-columns: repeat(auto-fill, minmax(#{$column}px, 1fr));
+  }
+}
+
+.grid-gap {
+  gap: 10px;
+}
