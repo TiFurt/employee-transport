@@ -1,5 +1,5 @@
 import { Entity } from './entity.model';
-import { Timestamp } from '@angular/fire/firestore';
+import { GeoPoint, Timestamp } from '@angular/fire/firestore';
 
 export class Branch implements Entity {
   id: string;
@@ -9,6 +9,7 @@ export class Branch implements Entity {
 
   name: string;
   description: string;
+  location: GeoPoint | null;
 
   constructor(branch: Partial<Branch>) {
     Object.assign(this, branch);

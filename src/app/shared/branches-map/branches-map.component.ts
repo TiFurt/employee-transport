@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
@@ -20,4 +25,17 @@ export class BranchesMapComponent {
     maxZoom: 15,
     minZoom: 8,
   };
+
+  enableClick = input<boolean>(false);
+  onClick = output<google.maps.MapMouseEvent | google.maps.IconMouseEvent>();
+
+  onMapClick(
+    event: google.maps.MapMouseEvent | google.maps.IconMouseEvent,
+  ): void {
+    if (!this.enableClick) {
+      return;
+    }
+
+    this.onClick.emit(event);
+  }
 }
