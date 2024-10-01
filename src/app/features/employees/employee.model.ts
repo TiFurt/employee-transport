@@ -1,6 +1,6 @@
 import { Entity } from '@core/models/entity.model';
 
-export interface Employee extends Entity {
+export class Employee extends Entity {
   name: string;
   longitude: number;
   latitude: number;
@@ -12,4 +12,9 @@ export interface Employee extends Entity {
   city: string;
   state: string;
   country: string;
+
+  constructor(employee: Partial<Employee>) {
+    super(employee);
+    Object.assign(this, employee);
+  }
 }

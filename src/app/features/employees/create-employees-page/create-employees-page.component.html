@@ -1,1 +1,15 @@
-<p>create-employees-page works!</p>
+<mat-form-field class="w-100">
+  <mat-label>Nome</mat-label>
+  <input
+    matInput
+    placeholder="Digite o nome da filial"
+    [formControl]="formGroup.controls.name"
+  />
+</mat-form-field>
+
+<div class="actions text-center">
+  <button mat-raised-button color="primary" (click)="save()">
+    <mat-icon>add</mat-icon>
+    <span>Criar Colaborador</span>
+  </button>
+</div>
