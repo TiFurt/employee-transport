@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `<p>list-branches works!</p>`,
-  styleUrl: './list-branches-page.component.css',
+  styleUrl: './list-branches-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListBranchesPageComponent {}
