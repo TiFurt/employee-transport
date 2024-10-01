@@ -32,6 +32,6 @@ export class CreateBranchesPageComponent {
       description: this.formGroup.value.description ?? '',
     });
 
-    this.branchesService.save(branch);
+    this.branchesService.save(branch).subscribe();
   };
 }

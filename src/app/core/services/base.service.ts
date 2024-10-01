@@ -48,16 +48,18 @@ export abstract class BaseService<T extends Entity> {
     }
 
     delete entity.id;
-    return from(addDoc(this.collection, entity as T));
+    return from(addDoc(this.collection, this.toObject(entity)));
   }
 
-  update(
-    classItem: Partial<T> & { id: string },
-  ): Observable<DocumentReference> {
-    const personRef = this.getRefById(classItem.id);
+  update(entity: Partial<T> & { id: string }): Observable<DocumentReference> {
+    const entityRef = this.getRefById(entity.id);
 
-    return from(updateDoc(personRef, { ...classItem })).pipe(
-      map(() => personRef),
+    return from(updateDoc(entityRef, { ...entity })).pipe(
+      map(() => entityRef),
     ) as Observable<DocumentReference>;
+  }
+
+  private toObject(value: any): object {
+    return Object.assign({}, value);
   }
 }

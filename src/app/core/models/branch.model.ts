@@ -12,5 +12,14 @@ export class Branch implements Entity {
 
   constructor(branch: Partial<Branch>) {
     Object.assign(this, branch);
+
+    if (!this.createdAt) {
+      this.createdAt = Timestamp.now();
+      this.updatedAt = Timestamp.now();
+    }
+  }
+
+  isNew(): boolean {
+    return !this.id;
   }
 }
