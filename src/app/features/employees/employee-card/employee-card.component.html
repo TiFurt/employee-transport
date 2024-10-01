@@ -3,7 +3,19 @@
     <mat-card-title>{{ employee()?.name }}</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content> </mat-card-content>
+  <mat-card-content>
+    <div>
+      @if (employee()?.location) {
+        <div>
+          Latitude: {{ employee()?.location?.latitude }} / 
+          Longitude: {{ employee()?.location?.longitude }}
+        </div>
+      } @else {
+        <div>No location available</div>
+      }
+
+    </div>
+  </mat-card-content>
 
   <mat-card-actions class="employee-actions">
     <button
