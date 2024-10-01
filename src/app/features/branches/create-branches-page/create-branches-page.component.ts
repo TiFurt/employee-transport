@@ -46,6 +46,7 @@ export class CreateBranchesPageComponent {
 
   save = () => {
     if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
       return;
     }
 
@@ -55,7 +56,7 @@ export class CreateBranchesPageComponent {
       location: this.formGroup.value.location,
     });
 
-    this.branchesService.save(branch).subscribe((result) => {
+    this.branchesService.save(branch).subscribe(() => {
       this.notificationService.showSuccess('Filial criada com sucesso');
       this.router.navigate(['/branches']);
     });

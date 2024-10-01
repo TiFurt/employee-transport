@@ -1,26 +1,13 @@
 import { Entity } from './entity.model';
-import { GeoPoint, Timestamp } from '@angular/fire/firestore';
+import { GeoPoint } from '@angular/fire/firestore';
 
-export class Branch implements Entity {
-  id: string;
-  createdAt: Timestamp;
-  updatedAt: Timestamp;
-  deletedAt: Timestamp | null;
-
+export class Branch extends Entity {
   name: string;
   description: string;
   location: GeoPoint | null;
 
   constructor(branch: Partial<Branch>) {
+    super(branch);
     Object.assign(this, branch);
-
-    if (!this.createdAt) {
-      this.createdAt = Timestamp.now();
-      this.updatedAt = Timestamp.now();
-    }
-  }
-
-  isNew(): boolean {
-    return !this.id;
   }
 }
