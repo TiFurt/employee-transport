@@ -30,6 +30,13 @@ export const routes: Routes = [
       ).then((m) => m.ListEmployeesPageComponent),
   },
   {
+    path: 'employees/create',
+    loadComponent: () =>
+      import(
+        './features/employees/create-employees-page/create-employees-page.component'
+      ).then((m) => m.CreateEmployeesPageComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

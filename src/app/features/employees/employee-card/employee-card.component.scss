@@ -1,0 +1,25 @@
+mat-card {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.employee-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-gap: 5px;
+}
+
+.employee-info {
+  font-weight: 500;
+}
+
+.employee-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
