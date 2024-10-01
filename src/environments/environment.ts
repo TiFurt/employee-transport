@@ -1,4 +1,4 @@
 export const environment = {
-  firebaseConfig: {
-  },
+  development: false,
+  firebaseConfig: {},
 };
