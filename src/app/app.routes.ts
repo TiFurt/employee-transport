@@ -30,6 +30,13 @@ export const routes: Routes = [
       ).then((m) => m.CreateBranchesPageComponent),
   },
   {
+    path: 'branches/:id/edit',
+    loadComponent: () =>
+      import(
+        './features/branches/edit-branches-page/edit-branches-page.component'
+      ).then((m) => m.EditBranchesPageComponent),
+  },
+  {
     path: 'employees',
     loadComponent: () =>
       import(
