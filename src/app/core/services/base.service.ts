@@ -7,6 +7,7 @@ import {
   DocumentReference,
   Firestore,
   query,
+  serverTimestamp,
   updateDoc,
   where,
 } from '@angular/fire/firestore';
@@ -36,6 +37,13 @@ export abstract class BaseService<T extends Entity> {
 
   getByRef(classRef: DocumentReference): Observable<T> {
     return docData<T>(classRef, { idField: 'id' });
+  }
+
+  delete(id: string): Observable<DocumentReference> {
+    return this.update({
+      id,
+      deletedAt: serverTimestamp(),
+    } as T);
   }
 
   save(entity: Partial<T>): Observable<DocumentReference> {

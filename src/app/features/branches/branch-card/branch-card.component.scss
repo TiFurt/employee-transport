@@ -1,0 +1,19 @@
+mat-card {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.branch-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-gap: 5px;
+}
+
+.branch-info {
+  font-weight: 500;
+}
+
+.branch-actions {
+  display: flex;
+  justify-content: space-between;
+}

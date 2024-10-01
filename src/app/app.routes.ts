@@ -51,6 +51,13 @@ export const routes: Routes = [
       ).then((m) => m.CreateEmployeesPageComponent),
   },
   {
+    path: 'employees/:id/edit',
+    loadComponent: () =>
+      import(
+        './features/employees/edit-employees-page/edit-employees-page.component'
+      ).then((m) => m.EditEmployeesPageComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

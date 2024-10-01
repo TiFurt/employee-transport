@@ -4,7 +4,7 @@ export abstract class Entity {
   id: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
-  deletedAt: Timestamp | null;
+  deletedAt: Timestamp | null = null;
 
   constructor(entity: Partial<Entity>) {
     Object.assign(this, entity);

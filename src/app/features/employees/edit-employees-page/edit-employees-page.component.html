@@ -22,12 +22,13 @@
 
 <app-branches-map
   [enableClick]="true"
+  [initialPositions]="[initialPosition]"
   (onClick)="onMapClick($event)"
 ></app-branches-map>
 
 <div class="actions text-center">
-  <button mat-raised-button color="primary" (click)="save()">
-    <mat-icon>add</mat-icon>
-    <span>Criar Colaborador</span>
+  <button mat-raised-button color="primary" (click)="update()">
+    <mat-icon>save</mat-icon>
+    <span>Atualizar Colaborador</span>
   </button>
 </div>

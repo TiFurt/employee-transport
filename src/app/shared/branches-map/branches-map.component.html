@@ -6,5 +6,9 @@
     [zoom]="zoom"
     [options]="options"
     (mapClick)="onMapClick($event)"
-  ></google-map>
+  >
+    @for (position of markerPositions(); track position) {
+      <map-marker [position]="position" [options]="markerOptions()" />
+    }
+  </google-map>
 </div>
