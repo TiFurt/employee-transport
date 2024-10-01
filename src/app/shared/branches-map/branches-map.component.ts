@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  Input,
   input,
   output,
   signal,
@@ -36,6 +37,10 @@ export class BranchesMapComponent {
   selectMultiplePositions = input<boolean>(false);
   draggable = input<boolean>(false);
   onClick = output<google.maps.MapMouseEvent | google.maps.IconMouseEvent>();
+
+  @Input() set initialPositions(value: google.maps.LatLngLiteral[]) {
+    this.markerPositions.set(value);
+  }
 
   onMapClick(
     event: google.maps.MapMouseEvent | google.maps.IconMouseEvent,

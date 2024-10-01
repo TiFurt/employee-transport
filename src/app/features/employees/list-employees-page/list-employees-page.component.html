@@ -8,3 +8,13 @@
     <span>Criar Colaborador</span>
   </button>
 </div>
+
+<div class="employee-list">
+  @for (employee of employees | async; track employee) {
+    <app-employee-card
+    [employee]="employee">
+    </app-employee-card>
+  } @empty {
+    <div><p>Vai trabaia vagabundo</p></div>
+  }
+</div>

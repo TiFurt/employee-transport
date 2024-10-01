@@ -2,7 +2,7 @@ import {
   CurrencyPipe,
   DatePipe
 } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 import {
   MatButton,
   MatIconButton
