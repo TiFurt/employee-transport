@@ -5,6 +5,8 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BranchService } from '../services/branch.service';
 import { Branch } from '@app/core/models/branch.model';
+import { NotificationService } from '@app/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-branches-page',
@@ -14,8 +16,10 @@ import { Branch } from '@app/core/models/branch.model';
   styleUrl: './create-branches-page.component.scss',
 })
 export class CreateBranchesPageComponent {
+  private readonly router = inject(Router);
   private readonly formBuilder = inject(FormBuilder);
   private readonly branchesService = inject(BranchService);
+  private readonly notificationService = inject(NotificationService);
 
   formGroup = this.formBuilder.group({
     name: ['', Validators.required],
@@ -32,6 +36,9 @@ export class CreateBranchesPageComponent {
       description: this.formGroup.value.description ?? '',
     });
 
-    this.branchesService.save(branch).subscribe();
+    this.branchesService.save(branch).subscribe((result) => {
+      this.notificationService.showSuccess('Filial criada com sucesso');
+      this.router.navigate(['/branches']);
+    });
   };
 }
