@@ -19,6 +19,10 @@ h1.main-app-name {
 
 .main-sidenav-container {
   flex: 1;
+
+  .mat-sidenav-content {
+    padding: 16px;
+  }
 }
 
 .main-is-mobile .main-sidenav-container {
