@@ -49,6 +49,8 @@ export class EditEmployeesPageComponent implements OnInit {
     alias: 'id',
   });
 
+  initialPosition: google.maps.LatLngLiteral;
+
   ngOnInit(): void {
     if (!this.employeeId()) {
       this.router.navigate(['/employees']);
@@ -91,6 +93,10 @@ export class EditEmployeesPageComponent implements OnInit {
     const employeeReff = this.employeesService.getRefById(this.employeeId());
     this.employeesService.getByRef(employeeReff).subscribe((employee) => {
       this.formGroup.patchValue(employee);
+      this.initialPosition = {
+        lat: employee.location?.latitude ?? 0,
+        lng: employee.location?.longitude ?? 0,
+      };
     });
   }
 }
