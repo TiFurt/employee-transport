@@ -5,7 +5,11 @@ import {
   ScreenTrackingService,
 } from '@angular/fire/analytics';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import {
+  connectFirestoreEmulator,
+  getFirestore,
+  provideFirestore,
+} from '@angular/fire/firestore';
 import { getPerformance, providePerformance } from '@angular/fire/performance';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
@@ -21,7 +25,15 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
-    provideFirestore(() => getFirestore()),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+
+      if (environment.development) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+
+      return firestore;
+    }),
     providePerformance(() => getPerformance()),
   ],
 };

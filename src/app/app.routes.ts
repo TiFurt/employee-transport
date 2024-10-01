@@ -23,6 +23,13 @@ export const routes: Routes = [
       ).then((m) => m.ListBranchesPageComponent),
   },
   {
+    path: 'branches/create',
+    loadComponent: () =>
+      import(
+        './features/branches/create-branches-page/create-branches-page.component'
+      ).then((m) => m.CreateBranchesPageComponent),
+  },
+  {
     path: 'employees',
     loadComponent: () =>
       import(

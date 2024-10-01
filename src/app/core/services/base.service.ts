@@ -8,9 +8,9 @@ import {
   Firestore,
   query,
   updateDoc,
+  where,
 } from '@angular/fire/firestore';
 import { Entity } from '@core/models/entity.model';
-import { notDeletedWhereStatement } from '@core/services/not-deleted-query.helper';
 import { CollectionReference } from '@firebase/firestore';
 import { from, map, Observable } from 'rxjs';
 
@@ -18,11 +18,16 @@ export abstract class BaseService<T extends Entity> {
   protected readonly firestore: Firestore = inject(Firestore);
   protected abstract readonly collectionName: string;
   protected abstract readonly collection: CollectionReference<T>;
+  protected readonly notDeletedWhereStatement = where('deletedAt', '==', null);
+  protected readonly deletedWhereStatement = where('deletedAt', '!=', null);
 
   getAll(): Observable<T[]> {
-    return collectionData<T>(query(this.collection, notDeletedWhereStatement), {
-      idField: 'id',
-    });
+    return collectionData<T>(
+      query(this.collection, this.notDeletedWhereStatement),
+      {
+        idField: 'id',
+      },
+    );
   }
 
   getRefById(id: string): DocumentReference {
@@ -43,16 +48,18 @@ export abstract class BaseService<T extends Entity> {
     }
 
     delete entity.id;
-    return from(addDoc(this.collection, entity as T));
+    return from(addDoc(this.collection, this.toObject(entity)));
   }
 
-  update(
-    classItem: Partial<T> & { id: string },
-  ): Observable<DocumentReference> {
-    const personRef = this.getRefById(classItem.id);
+  update(entity: Partial<T> & { id: string }): Observable<DocumentReference> {
+    const entityRef = this.getRefById(entity.id);
 
-    return from(updateDoc(personRef, { ...classItem })).pipe(
-      map(() => personRef),
+    return from(updateDoc(entityRef, { ...entity })).pipe(
+      map(() => entityRef),
     ) as Observable<DocumentReference>;
+  }
+
+  private toObject(value: any): object {
+    return Object.assign({}, value);
   }
 }
