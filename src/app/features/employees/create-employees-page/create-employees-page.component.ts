@@ -7,7 +7,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { NotificationService } from '@app/services/notification.service';
-import { Employee } from '@features/employees/employee.model';
+import { Employee } from '@app/core/models/employee.model';
 import { EmployeeService } from '@features/employees/employee.service';
 import { BranchesMapComponent } from '@shared/branches-map/branches-map.component';
 

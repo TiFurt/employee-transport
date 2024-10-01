@@ -1,22 +1,21 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import {
-  CurrencyPipe,
-  DatePipe
-} from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
-import {
-  MatButton,
-  MatIconButton
-} from '@angular/material/button';
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  input,
+} from '@angular/core';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import {
   MatCard,
   MatCardActions,
   MatCardContent,
   MatCardHeader,
-  MatCardTitle
+  MatCardTitle,
 } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Employee } from '@features/employees/employee.model';
+import { Employee } from '@app/core/models/employee.model';
 
 @Component({
   selector: 'app-employee-card',

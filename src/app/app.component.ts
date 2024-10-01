@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { LeftMenuItem } from './models/left-menu-itens.model';
+import { LeftMenuItem } from './core/models/left-menu-itens.model';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ branch()?.name }}</mat-card-title>
+  </mat-card-header>
+<mat-card-subtitle>{{ branch()?.description }}</mat-card-subtitle>
+    <mat-card-content>
+    <div>
+      @if (branch()?.location) {
+        <div>
+          Latitude: {{ branch()?.location?.latitude }} / Longitude:
+          {{ branch()?.location?.longitude }}
+        </div>
+      } @else {
+        <div>No location available</div>
+      }
+    </div>
+    </mat-card-content>
+
+  <mat-card-actions class="branch-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/branchs', 'edit', branch()?.id]"
+    >
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </button>
+        <button
+      mat-raised-button
+      color="primary"
+      (click)="delete()"
+    >
+      <mat-icon>delete</mat-icon>
+      <span>Deletar</span>
+    </button>
+  </mat-card-actions>
+
+</mat-card>

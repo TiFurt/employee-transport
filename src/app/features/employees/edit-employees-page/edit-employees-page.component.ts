@@ -14,8 +14,9 @@ import { MatInput } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { NotificationService } from '@app/services/notification.service';
 import { BranchesMapComponent } from '@app/shared/branches-map/branches-map.component';
-import { Employee } from '../employee.model';
+
 import { EmployeeService } from '../employee.service';
+import { Employee } from '@app/core/models/employee.model';
 
 @Component({
   selector: 'app-edit-employee-page',
