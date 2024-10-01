@@ -7,6 +7,11 @@
   />
 </mat-form-field>
 
+<app-branches-map
+  [enableClick]="true"
+  (onClick)="onMapClick($event)"
+></app-branches-map>
+
 <div class="actions text-center">
   <button mat-raised-button color="primary" (click)="save()">
     <mat-icon>add</mat-icon>
