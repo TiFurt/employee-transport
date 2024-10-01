@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BranchesMapComponent } from '../branches-map/branches-map.component';
+import { BranchesMapComponent } from '../../shared/branches-map/branches-map.component';
 
 @Component({
   selector: 'app-dashboard',
