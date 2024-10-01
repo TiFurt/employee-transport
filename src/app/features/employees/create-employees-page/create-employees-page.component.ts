@@ -53,11 +53,12 @@ export class CreateEmployeesPageComponent {
       return;
     }
 
-    const branch = new Employee({
+    const employee = new Employee({
       name: this.formGroup.value.name ?? '',
+      location: this.formGroup.value.location ?? null,
     });
 
-    this.employeesService.save(branch).subscribe(() => {
+    this.employeesService.save(employee).subscribe(() => {
       this.notificationService.showSuccess('Colaborador criada com sucesso');
       this.router.navigate(['/employees']);
     });
