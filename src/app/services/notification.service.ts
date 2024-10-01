@@ -13,4 +13,11 @@ export class NotificationService {
       panelClass: ['success-snackbar'],
     });
   }
+
+  showError(message: string): void {
+    this.snackBar.open(message, 'Fechar', {
+      duration: 5000,
+      panelClass: ['error-snackbar'],
+    });
+  }
 }
