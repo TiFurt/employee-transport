@@ -16,6 +16,9 @@ import { NotificationService } from '@app/services/notification.service';
 import { BranchesMapComponent } from '@app/shared/branches-map/branches-map.component';
 import { Employee } from '../employee.model';
 import { EmployeeService } from '../employee.service';
+import { BranchService } from '@app/features/branches/services/branch.service';
+import { MatSelectModule } from '@angular/material/select';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit-employee-page',
@@ -24,10 +27,12 @@ import { EmployeeService } from '../employee.service';
     MatFormField,
     MatLabel,
     MatInput,
+    MatSelectModule,
     ReactiveFormsModule,
     MatButton,
     MatIcon,
     BranchesMapComponent,
+    AsyncPipe,
   ],
   templateUrl: './edit-employees-page.component.html',
   styleUrl: './edit-employees-page.component.scss',
@@ -36,6 +41,7 @@ import { EmployeeService } from '../employee.service';
 export class EditEmployeesPageComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly formBuilder = inject(FormBuilder);
+  private readonly branchService = inject(BranchService);
   private readonly employeesService = inject(EmployeeService);
   private readonly notificationService = inject(NotificationService);
 
@@ -43,11 +49,14 @@ export class EditEmployeesPageComponent implements OnInit {
     id: [''],
     name: ['', Validators.required],
     location: [null as GeoPoint | null, Validators.required],
+    branchId: ['', Validators.required],
   });
 
   employeeId = input<string>('', {
     alias: 'id',
   });
+
+  branches$ = this.branchService.getAll();
 
   initialPosition: google.maps.LatLngLiteral;
 
@@ -79,6 +88,7 @@ export class EditEmployeesPageComponent implements OnInit {
       id: this.formGroup.value.id ?? '',
       name: this.formGroup.value.name ?? '',
       location: this.formGroup.value.location ?? null,
+      branchId: this.formGroup.value.branchId ?? '',
     });
 
     this.employeesService.update(employee).subscribe(() => {
