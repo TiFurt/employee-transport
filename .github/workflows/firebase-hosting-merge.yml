@@ -24,10 +24,17 @@ jobs:
       - name: Build
         run: npm run build:prod
 
-      - name: install Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install google-chrome-stable
+      - name: install Chrome driver for tests
+        run: 'sudo apt-get install -y libappindicator1 fonts-liberation
+        | wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        | sudo dpkg -i google-chrome*.deb
+        | sudo apt-get install -f
+        | wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
+        | unzip chromedriver_linux64.zip
+        | sudo mv chromedriver /usr/bin/chromedriver
+        | sudo chown root:root /usr/bin/chromedriver
+        | sudo chmod +x /usr/bin/chromedriver
+        | sudo ln -s /usr/bin/chromedriver /usr/local/bin/chromedriver'
 
       - name: Run tests
         run: npm run test
