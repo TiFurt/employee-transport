@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
@@ -5,7 +6,14 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-    }).compileComponents();
+    })
+      .overrideComponent(AppComponent, {
+        set: {
+          imports: [],
+          schemas: [CUSTOM_ELEMENTS_SCHEMA]
+        },
+      })
+      .compileComponents();
   });
 
   it('should create the app', () => {
